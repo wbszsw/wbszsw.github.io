@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JS," />
 
 
 
@@ -93,12 +93,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="上饶吴彦祖的github">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="ES6 SET基本用法ES6提供了新的数据结构Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。Set本身是一个构造函数，用来生成Set数据结构。 例子var s = new Set();[2, 3, 5, 4, 5, 2, 2].map(x =&amp;gt; s.add(x));for (let i of s) {  console.log(i);}// 2 3 5 4 set函数可以接受一">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 SET">
+<meta property="og:url" content="http://yoursite.com/2016/07/03/ES6-SET-MAP/index.html">
 <meta property="og:site_name" content="上饶吴彦祖的github">
+<meta property="og:description" content="ES6 SET基本用法ES6提供了新的数据结构Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。Set本身是一个构造函数，用来生成Set数据结构。 例子var s = new Set();[2, 3, 5, 4, 5, 2, 2].map(x =&amp;gt; s.add(x));for (let i of s) {  console.log(i);}// 2 3 5 4 set函数可以接受一">
+<meta property="og:updated_time" content="2017-07-11T02:19:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="上饶吴彦祖的github">
+<meta name="twitter:title" content="ES6 SET">
+<meta name="twitter:description" content="ES6 SET基本用法ES6提供了新的数据结构Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。Set本身是一个构造函数，用来生成Set数据结构。 例子var s = new Set();[2, 3, 5, 4, 5, 2, 2].map(x =&amp;gt; s.add(x));for (let i of s) {  console.log(i);}// 2 3 5 4 set函数可以接受一">
 
 
 
@@ -126,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/07/03/ES6-SET-MAP/"/>
 
 
 
 
 
-  <title>上饶吴彦祖的github</title>
+  <title>ES6 SET | 上饶吴彦祖的github</title>
   
 
 
@@ -157,9 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,9 +245,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/07/03/ES6-SET-MAP/" itemprop="url">ES6 SET</a></h1>
+          <h1 class="post-title" itemprop="name headline">ES6 SET</h1>
         
 
         <div class="post-meta">
@@ -319,9 +320,7 @@
       
 
       
-        
-          
-            <h1 id="ES6-SET"><a href="#ES6-SET" class="headerlink" title="ES6 SET"></a>ES6 SET</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>ES6提供了新的数据结构Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。<br>Set本身是一个构造函数，用来生成Set数据结构。</p>
+        <h1 id="ES6-SET"><a href="#ES6-SET" class="headerlink" title="ES6 SET"></a>ES6 SET</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>ES6提供了新的数据结构Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。<br>Set本身是一个构造函数，用来生成Set数据结构。</p>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>var s = new Set();<br>[2, 3, 5, 4, 5, 2, 2].map(x =&gt; s.add(x));<br>for (let i of s) {<br>  console.log(i);<br>}<br>// 2 3 5 4</p>
 <h2 id="set函数可以接受一个数组-或类似数组的对象-作为参数，用来初始化"><a href="#set函数可以接受一个数组-或类似数组的对象-作为参数，用来初始化" class="headerlink" title="set函数可以接受一个数组(或类似数组的对象)作为参数，用来初始化"></a>set函数可以接受一个数组(或类似数组的对象)作为参数，用来初始化</h2><h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p>// 例一<br>var set = new Set([1, 2, 3, 4, 4]);<br>[…set]<br>// [1, 2, 3, 4]</p>
 <p>// 例二<br>var items = new Set([1, 2, 3, 4, 5, 5, 5, 5]);<br>items.size // 5</p>
@@ -360,276 +359,72 @@
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>WeakSet没有size属性，没有办法遍历它的成员。</p>
 <p>WeakSet不能遍历，是因为成员都是弱引用，随时可能消失，遍历机制无法保证成员的存在，很可能刚刚遍历结束，成员就取不到了。WeakSet的一个用处，是储存DOM节点，而不用担心这些节点从文档移除时，会引发内存泄漏。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/03/wyz/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="上饶吴彦祖">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="上饶吴彦祖的github">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/07/03/wyz/" itemprop="url">CSS ios下index的坑</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-03T10:46:48+08:00">
-                2015-07-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/JS/" rel="tag"># JS</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="z-index失效"><a href="#z-index失效" class="headerlink" title="z-index失效"></a>z-index失效</h1><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>多种  具体未知</p>
-<h2 id="z-index失效的场景"><a href="#z-index失效的场景" class="headerlink" title="z-index失效的场景"></a>z-index失效的场景</h2><p>常见于ios微信端，Safari端，ios对于position的应用和安卓效果</p>
-<h2 id="常见的解决方案"><a href="#常见的解决方案" class="headerlink" title="常见的解决方案"></a>常见的解决方案</h2><p>1.将父级元素加一个overflow属性，效果也许有用<br>2.给父级元素加定位，然后父级元素加z-index加大，这个属于插边球<br>3.加属性：-webkit-transform: translate3d(0,0,0)，因为transform在ios上会忽略层级这个概念。这个时候把不用的层级降到最低。  或许有用</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/02/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="上饶吴彦祖">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="上饶吴彦祖的github">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/02/03/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-02-03T17:16:27+08:00">
-                2015-02-03
-              </time>
+              <a href="/2015/07/03/wyz/" rel="next" title="CSS ios下index的坑">
+                <i class="fa fa-chevron-left"></i> CSS ios下index的坑
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -637,6 +432,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -656,8 +455,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -710,6 +518,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-SET"><span class="nav-number">1.</span> <span class="nav-text">ES6 SET</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">1.1.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.1.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set函数可以接受一个数组-或类似数组的对象-作为参数，用来初始化"><span class="nav-number">1.2.</span> <span class="nav-text">set函数可以接受一个数组(或类似数组的对象)作为参数，用来初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例子-1"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.3.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set实例的属性和方法"><span class="nav-number">1.4.</span> <span class="nav-text">Set实例的属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历操作"><span class="nav-number">1.5.</span> <span class="nav-text">遍历操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-3"><span class="nav-number">1.5.1.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详解"><span class="nav-number">1.5.2.</span> <span class="nav-text">详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WeakSet"><span class="nav-number">1.6.</span> <span class="nav-text">WeakSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-4"><span class="nav-number">1.6.1.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释"><span class="nav-number">1.6.2.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-5"><span class="nav-number">1.6.3.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.6.4.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -823,10 +647,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
