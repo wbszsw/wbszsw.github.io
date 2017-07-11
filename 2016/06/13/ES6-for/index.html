@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -93,16 +93,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="for循环遍历20年前的for我们如何遍历数组中的元素？20年前JavaScript刚萌生时，你可能这样实现数组遍历：for (var index = 0; index &amp;lt; myArray.length; index++) {  console.log(myArray[index]);} forEach自ES5正式发布后，你可以使用内建的forEach方法来遍历数组：myArray.forE">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2015/02/03/hello-world/index.html">
+<meta property="og:title" content="for循环遍历">
+<meta property="og:url" content="http://yoursite.com/2016/06/13/ES6-for/index.html">
 <meta property="og:site_name" content="上饶吴彦祖的github">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-07-07T18:33:18.000Z">
+<meta property="og:description" content="for循环遍历20年前的for我们如何遍历数组中的元素？20年前JavaScript刚萌生时，你可能这样实现数组遍历：for (var index = 0; index &amp;lt; myArray.length; index++) {  console.log(myArray[index]);} forEach自ES5正式发布后，你可以使用内建的forEach方法来遍历数组：myArray.forE">
+<meta property="og:updated_time" content="2017-07-11T02:33:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="for循环遍历">
+<meta name="twitter:description" content="for循环遍历20年前的for我们如何遍历数组中的元素？20年前JavaScript刚萌生时，你可能这样实现数组遍历：for (var index = 0; index &amp;lt; myArray.length; index++) {  console.log(myArray[index]);} forEach自ES5正式发布后，你可以使用内建的forEach方法来遍历数组：myArray.forE">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/02/03/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/06/13/ES6-for/"/>
 
 
 
 
 
-  <title>Hello World | 上饶吴彦祖的github</title>
+  <title>for循环遍历 | 上饶吴彦祖的github</title>
   
 
 
@@ -255,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/02/03/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/13/ES6-for/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="上饶吴彦祖">
@@ -272,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">for循环遍历</h1>
         
 
         <div class="post-meta">
@@ -284,8 +285,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-02-03T17:16:27+08:00">
-                2015-02-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-13T01:28:10+08:00">
+                2016-06-13
               </time>
             
 
@@ -319,15 +320,23 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="for循环遍历"><a href="#for循环遍历" class="headerlink" title="for循环遍历"></a>for循环遍历</h1><h2 id="20年前的for"><a href="#20年前的for" class="headerlink" title="20年前的for"></a>20年前的for</h2><p>我们如何遍历数组中的元素？20年前JavaScript刚萌生时，你可能这样实现数组遍历：<br>for (var index = 0; index &lt; myArray.length; index++) {<br>  console.log(myArray[index]);<br>}</p>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>自ES5正式发布后，你可以使用内建的forEach方法来遍历数组：<br>myArray.forEach(function (value) {<br>console.log(value);<br>});<br>这段代码看起来更加简洁，但这种方法也有一个小缺陷：你不能使用break语句中断循环，也不能使用return语句返回到外层函数。<br>当然，如果只用for循环的语法来遍历数组元素也很不错。</p>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h2><p>for (var index in myArray) { // 千万别这样做<br>  console.log(myArray[index]);<br>}<br>这绝对是一个糟糕的选择，为什么呢？</p>
+<p>在这段代码中，赋给index的值不是实际的数字，而是字符串“0”、“1”、“2”，此时很可能在无意之间进行字符串算数计算，例如：“2” + 1 == “21”，这给编码过程带来极大的不便。<br>作用于数组的for-in循环体除了遍历数组元素外，还会遍历自定义属性。举个例子，如果你的数组中有一个可枚举属性myArray.name，循环将额外执行一次，遍历到名为“name”的索引。就连数组原型链上的属性都能被访问到。<br>最让人震惊的是，在某些情况下，这段代码可能按照随机顺序遍历数组元素。<br>简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。</p>
+<h2 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h2><p>for (var value of myArray) {<br>  console.log(value);<br>}<br>是的，与之前的内建方法相比，这种循环方式看起来是否有些眼熟？那好，我们将要探究一下for-of循环的外表下隐藏着哪些强大的功能。现在，只需记住：<br>这是最简洁、最直接的遍历数组元素的语法<br>这个方法避开了for-in循环的所有缺陷<br>与forEach()不同的是，它可以正确响应break、continue和return语句<br>for-in循环用来遍历对象属性。<br>for-of循环用来遍历数据—例如数组中的值。<br>但是，不仅如此！</p>
+<p>for-of循环也可以遍历其它的集合<br>for-of循环不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象。<br>for-of循环也支持字符串遍历，它将字符串视为一系列的Unicode字符来进行遍历：<br>for (var chr of “”) {<br>  alert(chr);<br>}</p>
+<h3 id="for-of支持set-和-Map对象遍历"><a href="#for-of支持set-和-Map对象遍历" class="headerlink" title="for of支持set 和 Map对象遍历"></a>for of支持set 和 Map对象遍历</h3><p>对不起，你一定没听说过Map和Set对象。他们是ES6中新增的类型。我们将在后续的文章讲解这两个新的类型。如果你曾在其它语言中使用过Map和Set，你会发现ES6中的并无太大出入。<br>举个例子，Set对象可以自动排除重复项：<br>// 基于单词数组创建一个set对象</p>
+<p>var uniqueWords = new Set(words);<br>生成Set对象后，你可以轻松遍历它所包含的内容：</p>
+<p>for (var word of uniqueWords) {<br>   console.log(word);<br>}</p>
+<p>Map对象稍有不同：内含的数据由键值对组成，所以你需要使用解构（destructuring）来将键值对拆解为两个独立的变量：</p>
+<p>for (var [key, value] of phoneBookMap) {<br>   console.log(key + “‘s phone number is: “ + value);<br>}</p>
+<p>解构也是ES6的新特性，我们将在另一篇文章中讲解。看来我应该记录这些优秀的主题，未来有太多的新内容需要一一剖析。</p>
+<p>现在，你只需记住：未来的JS可以使用一些新型的集合类，甚至会有更多的类型陆续诞生，而for-of就是为遍历所有这些集合特别设计的循环语句。</p>
+<p>for-of循环不支持普通对象，但如果你想迭代一个对象的属性，你可以用for-in循环（这也是它的本职工作）或内建的Object.keys()方法：</p>
+<p>// 向控制台输出对象的可枚举属性<br>for (var key of Object.keys(someObject)) {<br>  console.log(key + “: “ + someObject[key]);<br>}</p>
+<p>新加入的for-of循环像极了C++、Java、C#以及Python中的循环语句。与它们一样，这里的for-of循环支持语言和标准库中提供的几种不同的数据结构。它同样也是这门语言中的一个扩展点</p>
+<h2 id="请关注下一篇-迭代器"><a href="#请关注下一篇-迭代器" class="headerlink" title="请关注下一篇  迭代器"></a>请关注下一篇  迭代器</h2><p>正如其它语言中的for/foreach语句一样，for-of循环语句通过方法调用来遍历各种集合。数组、Maps对象、Sets对象以及其它在我们讨论的对象有一个共同点，它们都有一个迭代器方法。</p>
 
       
     </div>
@@ -355,6 +364,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
 
       
       
@@ -364,14 +379,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/07/03/z-index/" rel="next" title="CSS ios下index的坑">
+                <i class="fa fa-chevron-left"></i> CSS ios下index的坑
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/03/z-index/" rel="prev" title="CSS ios下index的坑">
-                CSS ios下index的坑 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/13/迭代器/" rel="prev" title="for循环遍历">
+                for循环遍历 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -492,7 +511,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#for循环遍历"><span class="nav-number">1.</span> <span class="nav-text">for循环遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#20年前的for"><span class="nav-number">1.1.</span> <span class="nav-text">20年前的for</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach"><span class="nav-number">1.2.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-in"><span class="nav-number">1.3.</span> <span class="nav-text">for in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-of"><span class="nav-number">1.4.</span> <span class="nav-text">for of</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of支持set-和-Map对象遍历"><span class="nav-number">1.4.1.</span> <span class="nav-text">for of支持set 和 Map对象遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请关注下一篇-迭代器"><span class="nav-number">1.5.</span> <span class="nav-text">请关注下一篇  迭代器</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -282,7 +282,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-03T12:41:48+08:00">
                 2016-07-03
@@ -402,7 +402,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/03/wyz/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/13/迭代器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="上饶吴彦祖">
@@ -421,7 +421,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/07/03/wyz/" itemprop="url">CSS ios下index的坑</a></h1>
+                <a class="post-title-link" href="/2016/06/13/迭代器/" itemprop="url">for循环遍历</a></h1>
         
 
         <div class="post-meta">
@@ -431,7 +431,278 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-13T02:18:03+08:00">
+                2016-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ES6迭代器"><a href="#ES6迭代器" class="headerlink" title="ES6迭代器"></a>ES6迭代器</h1><h2 id="迭代器介绍"><a href="#迭代器介绍" class="headerlink" title="迭代器介绍"></a>迭代器介绍</h2><p>正如其它语言中的for/foreach语句一样，for-of循环语句通过方法调用来遍历各种集合。数组、Maps对象、Sets对象以及其它在我们讨论的对象有一个共同点，它们都有一个迭代器方法。</p>
+<p>你可以给任意类型的对象添加迭代器方法。</p>
+<p>当你为对象添加myObject.toString()方法后，就可以将对象转化为字符串，同样地，当你向任意对象添加myObject<a href="">Symbol.iterator</a>方法，就可以遍历这个对象了。</p>
+<p>举个例子，假设你正在使用jQuery，尽管你非常钟情于里面的.each()方法，但你还是想让jQuery对象也支持for-of循环，你可以这样做：</p>
+<pre><code>// 因为jQuery对象与数组相似
+// 可以为其添加与数组一致的迭代器方法
+jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+</code></pre><p>好的，我知道你在想什么，那个[Symbol.iterator]语法看起来很奇怪，这段代码到底做了什么呢？这里通过Symbol处理了一下方法的名称。标准委员会可以把这个方法命名为.iterator()方法，但是如果你的代码中的对象可能也有一些.iterator()方法，这一定会让你感到非常困惑。于是在ES6标准中使用symbol来作为方法名，而不是使用字符串。</p>
+<p>你大概也猜到了，Symbols是ES6中的新类型，我们会在后续的文章中讲解。现在，你需要记住，基于新标准，你可以定义一个全新的symbol，就像Symbol.iterator，如此一来可以保证不与任何已有代码产生冲突。这样做的代价是，这段代码的语法看起来会略显生硬，但是这微乎其微代价却可以为你带来如此多的新特性和新功能，并且你所做的这一切可以完美地向后兼容。</p>
+<p>所有拥有<a href="">Symbol.iterator</a>的对象被称为可迭代的。在接下来的文章中你会发现，可迭代对象的概念几乎贯穿于整门语言之中，不仅是for-of循环，还有Map和Set构造函数、解构赋值，以及新的展开操作符。</p>
+<p>##迭代器对象<br>现在，你将无须亲自从零开始实现一个对象迭代器，我们会在下一篇文章详细讲解。为了帮助你理解本文，我们简单了解一下迭代器（如果你跳过这一章，你将错过非常精彩的技术细节）。</p>
+<p>for-of循环首先调用集合的<a href="">Symbol.iterator</a>方法，紧接着返回一个新的迭代器对象。迭代器对象可以是任意具有.next()方法的对象；for-of循环将重复调用这个方法，每次循环调用一次。举个例子，这段代码是我能想出来的最简单的迭代器：</p>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><pre><code>var zeroesForeverIterator = {
+[Symbol.iterator]: function () {
+  return this;
+  },
+  next: function () {
+  return {done: false, value: 0};
+}
+};
+</code></pre><h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>每一次调用.next()方法，它都返回相同的结果，返回给for-of循环的结果有两种可能：(a) 我们尚未完成迭代；(b) 下一个值为0。这意味着(value of zeroesForeverIterator) {}将会是一个无限循环。当然，一般来说迭代器不会如此简单。</p>
+<p>这个迭代器的设计，以及它的.done和.value属性，从表面上看与其它语言中的迭代器不太一样。在Java中，迭代器有分离的.hasNext()和.next()方法。在Python中，他们只有一个.next() 方法，当没有更多值时抛出StopIteration异常。但是所有这三种设计从根本上讲都返回了相同的信息。</p>
+<p>迭代器对象也可以实现可选的.return()和.throw(exc)方法。如果for-of循环过早退出会调用.return()方法，异常、break语句或return语句均可触发过早退出。如果迭代器需要执行一些清洁或释放资源的操作，可以在.return()方法中实现。大多数迭代器方法无须实现这一方法。.throw(exc)方法的使用场景就更特殊了：for-of循环永远不会调用它。但是我们还是会在下一篇文章更详细地讲解它的作用。</p>
+<p>现在我们已了解所有细节，可以写一个简单的for-of循环然后按照下面的方法调用重写被迭代的对象。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="for-of循环"><a href="#for-of循环" class="headerlink" title="for of循环"></a>for of循环</h3><pre><code>for (VAR of ITERABLE) {
+  一些语句
+}
+</code></pre><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>然后是一个使用以下方法和少许临时变量实现的与之前大致相当的示例，：<br>      var $iterator = ITERABLE<a href="">Symbol.iterator</a>;<br>      var $result = $iterator.next();<br>      while (!$result.done) {<br>        VAR = $result.value;<br>        一些语句<br>        $result = $iterator.next();<br>      }</p>
+<p> 这段代码没有展示.return()方法是如何处理的，我们可以添加这部分代码，但我认为这对于我们正在讲解的内容来说过于复杂了。for-of循环用起来很简单，但是其背后有着非常复杂的机制。</p>
+<p>###兼容性<br>目前，对于for-of循环新特性，所有最新版本Firefox都（部分）支持（译注：从FF 13开始陆续支持相关功能，FF 36 - FF 40基本支持大部分特性），在Chrome中可以通过访问 chrome://flags 并启用“实验性JavaScript”来支持。微软的Spartan浏览器支持，但是IE不支持。如果你想在web环境中使用这种新语法，同时需要支持IE和Safari，你可以使用Babel或Google的Traceur这些编译器来将你的ES6代码翻译为Web友好的ES5代码。</p>
+<p>而在服务端，你不需要类似的编译器，io.js中默认支持ES6新语法（部分），在Node中需要添加–harmony选项来启用相关特性。<br>{done: true}</p>
+<h1 id="下一章-生成器"><a href="#下一章-生成器" class="headerlink" title="下一章  生成器"></a>下一章  生成器</h1><p>在ES6中有一种新的对象与for-of循环配合使用非常契合，我没有提及它因为它是我们下周文章的主题，我认为这种新特性是ES6种最梦幻的地方，如果你尚未在类似Python和C#的语言中遇到它，你一开始很可能会发现它令人难以置信，但是这是编写迭代器最简单的方式，在重构中非常有用，并且它很可能改变我们书写异步代码的方式，无论是在浏览器环境还是服务器环境，所以，下周的深入浅出 ES6 中，请务必一起来仔细看看 ES6 的生成器：generators。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/13/ES6-for/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="上饶吴彦祖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="上饶吴彦祖的github">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/13/ES6-for/" itemprop="url">for循环遍历</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-13T01:28:10+08:00">
+                2016-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="for循环遍历"><a href="#for循环遍历" class="headerlink" title="for循环遍历"></a>for循环遍历</h1><h2 id="20年前的for"><a href="#20年前的for" class="headerlink" title="20年前的for"></a>20年前的for</h2><p>我们如何遍历数组中的元素？20年前JavaScript刚萌生时，你可能这样实现数组遍历：<br>for (var index = 0; index &lt; myArray.length; index++) {<br>  console.log(myArray[index]);<br>}</p>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>自ES5正式发布后，你可以使用内建的forEach方法来遍历数组：<br>myArray.forEach(function (value) {<br>console.log(value);<br>});<br>这段代码看起来更加简洁，但这种方法也有一个小缺陷：你不能使用break语句中断循环，也不能使用return语句返回到外层函数。<br>当然，如果只用for循环的语法来遍历数组元素也很不错。</p>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h2><p>for (var index in myArray) { // 千万别这样做<br>  console.log(myArray[index]);<br>}<br>这绝对是一个糟糕的选择，为什么呢？</p>
+<p>在这段代码中，赋给index的值不是实际的数字，而是字符串“0”、“1”、“2”，此时很可能在无意之间进行字符串算数计算，例如：“2” + 1 == “21”，这给编码过程带来极大的不便。<br>作用于数组的for-in循环体除了遍历数组元素外，还会遍历自定义属性。举个例子，如果你的数组中有一个可枚举属性myArray.name，循环将额外执行一次，遍历到名为“name”的索引。就连数组原型链上的属性都能被访问到。<br>最让人震惊的是，在某些情况下，这段代码可能按照随机顺序遍历数组元素。<br>简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。</p>
+<h2 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h2><p>for (var value of myArray) {<br>  console.log(value);<br>}<br>是的，与之前的内建方法相比，这种循环方式看起来是否有些眼熟？那好，我们将要探究一下for-of循环的外表下隐藏着哪些强大的功能。现在，只需记住：<br>这是最简洁、最直接的遍历数组元素的语法<br>这个方法避开了for-in循环的所有缺陷<br>与forEach()不同的是，它可以正确响应break、continue和return语句<br>for-in循环用来遍历对象属性。<br>for-of循环用来遍历数据—例如数组中的值。<br>但是，不仅如此！</p>
+<p>for-of循环也可以遍历其它的集合<br>for-of循环不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象。<br>for-of循环也支持字符串遍历，它将字符串视为一系列的Unicode字符来进行遍历：<br>for (var chr of “”) {<br>  alert(chr);<br>}</p>
+<h3 id="for-of支持set-和-Map对象遍历"><a href="#for-of支持set-和-Map对象遍历" class="headerlink" title="for of支持set 和 Map对象遍历"></a>for of支持set 和 Map对象遍历</h3><p>对不起，你一定没听说过Map和Set对象。他们是ES6中新增的类型。我们将在后续的文章讲解这两个新的类型。如果你曾在其它语言中使用过Map和Set，你会发现ES6中的并无太大出入。<br>举个例子，Set对象可以自动排除重复项：<br>// 基于单词数组创建一个set对象</p>
+<p>var uniqueWords = new Set(words);<br>生成Set对象后，你可以轻松遍历它所包含的内容：</p>
+<p>for (var word of uniqueWords) {<br>   console.log(word);<br>}</p>
+<p>Map对象稍有不同：内含的数据由键值对组成，所以你需要使用解构（destructuring）来将键值对拆解为两个独立的变量：</p>
+<p>for (var [key, value] of phoneBookMap) {<br>   console.log(key + “‘s phone number is: “ + value);<br>}</p>
+<p>解构也是ES6的新特性，我们将在另一篇文章中讲解。看来我应该记录这些优秀的主题，未来有太多的新内容需要一一剖析。</p>
+<p>现在，你只需记住：未来的JS可以使用一些新型的集合类，甚至会有更多的类型陆续诞生，而for-of就是为遍历所有这些集合特别设计的循环语句。</p>
+<p>for-of循环不支持普通对象，但如果你想迭代一个对象的属性，你可以用for-in循环（这也是它的本职工作）或内建的Object.keys()方法：</p>
+<p>// 向控制台输出对象的可枚举属性<br>for (var key of Object.keys(someObject)) {<br>  console.log(key + “: “ + someObject[key]);<br>}</p>
+<p>新加入的for-of循环像极了C++、Java、C#以及Python中的循环语句。与它们一样，这里的for-of循环支持语言和标准库中提供的几种不同的数据结构。它同样也是这门语言中的一个扩展点</p>
+<h2 id="请关注下一篇-迭代器"><a href="#请关注下一篇-迭代器" class="headerlink" title="请关注下一篇  迭代器"></a>请关注下一篇  迭代器</h2><p>正如其它语言中的for/foreach语句一样，for-of循环语句通过方法调用来遍历各种集合。数组、Maps对象、Sets对象以及其它在我们讨论的对象有一个共同点，它们都有一个迭代器方法。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/03/z-index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="上饶吴彦祖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="上饶吴彦祖的github">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/07/03/z-index/" itemprop="url">CSS ios下index的坑</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-03T10:46:48+08:00">
                 2015-07-03
@@ -545,7 +816,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-02-03T17:16:27+08:00">
                 2015-02-03
@@ -672,8 +943,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -686,7 +957,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -736,7 +1007,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
