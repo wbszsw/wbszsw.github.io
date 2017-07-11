@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/13/ES6-diedaiqi/index.html">
 <meta property="og:site_name" content="上饶吴彦祖的github">
 <meta property="og:description" content="ES6迭代器迭代器介绍正如其它语言中的for/foreach语句一样，for-of循环语句通过方法调用来遍历各种集合。数组、Maps对象、Sets对象以及其它在我们讨论的对象有一个共同点，它们都有一个迭代器方法。 你可以给任意类型的对象添加迭代器方法。 当你为对象添加myObject.toString()方法后，就可以将对象转化为字符串，同样地，当你向任意对象添加myObjectSymbol.it">
-<meta property="og:updated_time" content="2017-07-11T02:44:18.000Z">
+<meta property="og:updated_time" content="2017-07-11T09:29:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6迭代器">
 <meta name="twitter:description" content="ES6迭代器迭代器介绍正如其它语言中的for/foreach语句一样，for-of循环语句通过方法调用来遍历各种集合。数组、Maps对象、Sets对象以及其它在我们讨论的对象有一个共同点，它们都有一个迭代器方法。 你可以给任意类型的对象添加迭代器方法。 当你为对象添加myObject.toString()方法后，就可以将对象转化为字符串，同样地，当你向任意对象添加myObjectSymbol.it">
@@ -330,7 +330,7 @@ jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 </code></pre><p>好的，我知道你在想什么，那个[Symbol.iterator]语法看起来很奇怪，这段代码到底做了什么呢？这里通过Symbol处理了一下方法的名称。标准委员会可以把这个方法命名为.iterator()方法，但是如果你的代码中的对象可能也有一些.iterator()方法，这一定会让你感到非常困惑。于是在ES6标准中使用symbol来作为方法名，而不是使用字符串。</p>
 <p>你大概也猜到了，Symbols是ES6中的新类型，我们会在后续的文章中讲解。现在，你需要记住，基于新标准，你可以定义一个全新的symbol，就像Symbol.iterator，如此一来可以保证不与任何已有代码产生冲突。这样做的代价是，这段代码的语法看起来会略显生硬，但是这微乎其微代价却可以为你带来如此多的新特性和新功能，并且你所做的这一切可以完美地向后兼容。</p>
 <p>所有拥有<a href="">Symbol.iterator</a>的对象被称为可迭代的。在接下来的文章中你会发现，可迭代对象的概念几乎贯穿于整门语言之中，不仅是for-of循环，还有Map和Set构造函数、解构赋值，以及新的展开操作符。</p>
-<p>##迭代器对象<br>现在，你将无须亲自从零开始实现一个对象迭代器，我们会在下一篇文章详细讲解。为了帮助你理解本文，我们简单了解一下迭代器（如果你跳过这一章，你将错过非常精彩的技术细节）。</p>
+<h2 id="迭代器对象"><a href="#迭代器对象" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><p>现在，你将无须亲自从零开始实现一个对象迭代器，我们会在下一篇文章详细讲解。为了帮助你理解本文，我们简单了解一下迭代器（如果你跳过这一章，你将错过非常精彩的技术细节）。</p>
 <p>for-of循环首先调用集合的<a href="">Symbol.iterator</a>方法，紧接着返回一个新的迭代器对象。迭代器对象可以是任意具有.next()方法的对象；for-of循环将重复调用这个方法，每次循环调用一次。举个例子，这段代码是我能想出来的最简单的迭代器：</p>
 <h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><pre><code>var zeroesForeverIterator = {
 [Symbol.iterator]: function () {
@@ -349,7 +349,7 @@ jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 }
 </code></pre><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>然后是一个使用以下方法和少许临时变量实现的与之前大致相当的示例，：<br>      var $iterator = ITERABLE<a href="">Symbol.iterator</a>;<br>      var $result = $iterator.next();<br>      while (!$result.done) {<br>        VAR = $result.value;<br>        一些语句<br>        $result = $iterator.next();<br>      }</p>
 <p> 这段代码没有展示.return()方法是如何处理的，我们可以添加这部分代码，但我认为这对于我们正在讲解的内容来说过于复杂了。for-of循环用起来很简单，但是其背后有着非常复杂的机制。</p>
-<p>###兼容性<br>目前，对于for-of循环新特性，所有最新版本Firefox都（部分）支持（译注：从FF 13开始陆续支持相关功能，FF 36 - FF 40基本支持大部分特性），在Chrome中可以通过访问 chrome://flags 并启用“实验性JavaScript”来支持。微软的Spartan浏览器支持，但是IE不支持。如果你想在web环境中使用这种新语法，同时需要支持IE和Safari，你可以使用Babel或Google的Traceur这些编译器来将你的ES6代码翻译为Web友好的ES5代码。</p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>目前，对于for-of循环新特性，所有最新版本Firefox都（部分）支持（译注：从FF 13开始陆续支持相关功能，FF 36 - FF 40基本支持大部分特性），在Chrome中可以通过访问 chrome://flags 并启用“实验性JavaScript”来支持。微软的Spartan浏览器支持，但是IE不支持。如果你想在web环境中使用这种新语法，同时需要支持IE和Safari，你可以使用Babel或Google的Traceur这些编译器来将你的ES6代码翻译为Web友好的ES5代码。</p>
 <p>而在服务端，你不需要类似的编译器，io.js中默认支持ES6新语法（部分），在Node中需要添加–harmony选项来启用相关特性。<br>{done: true}</p>
 <h1 id="下一章-生成器"><a href="#下一章-生成器" class="headerlink" title="下一章  生成器"></a>下一章  生成器</h1><p>在ES6中有一种新的对象与for-of循环配合使用非常契合，我没有提及它因为它是我们下周文章的主题，我认为这种新特性是ES6种最梦幻的地方，如果你尚未在类似Python和C#的语言中遇到它，你一开始很可能会发现它令人难以置信，但是这是编写迭代器最简单的方式，在重构中非常有用，并且它很可能改变我们书写异步代码的方式，无论是在浏览器环境还是服务器环境，所以，下周的深入浅出 ES6 中，请务必一起来仔细看看 ES6 的生成器：generators。</p>
 
@@ -526,7 +526,7 @@ jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6迭代器"><span class="nav-number">1.</span> <span class="nav-text">ES6迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器介绍"><span class="nav-number">1.1.</span> <span class="nav-text">迭代器介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">1.1.1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释"><span class="nav-number">1.1.2.</span> <span class="nav-text">解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">1.2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of循环"><span class="nav-number">1.2.1.</span> <span class="nav-text">for of循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">1.2.2.</span> <span class="nav-text">迭代器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下一章-生成器"><span class="nav-number">2.</span> <span class="nav-text">下一章  生成器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6迭代器"><span class="nav-number">1.</span> <span class="nav-text">ES6迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器介绍"><span class="nav-number">1.1.</span> <span class="nav-text">迭代器介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器对象"><span class="nav-number">1.2.</span> <span class="nav-text">迭代器对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">1.2.1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释"><span class="nav-number">1.2.2.</span> <span class="nav-text">解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">1.3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of循环"><span class="nav-number">1.3.1.</span> <span class="nav-text">for of循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">1.3.2.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容性"><span class="nav-number">1.3.3.</span> <span class="nav-text">兼容性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下一章-生成器"><span class="nav-number">2.</span> <span class="nav-text">下一章  生成器</span></a></li></ol></div>
             
 
           </div>
