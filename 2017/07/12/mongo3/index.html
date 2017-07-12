@@ -1,0 +1,803 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="server," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="mongodb增删改查文档 （在终端中操作）MongoDB插入文档insert()方法要将数据插入到 MongoDB 集合中，需要使用 MongoDB 的 insert()或save()方法。 语法insert()命令的基本语法如下：  db.COLLECTION_NAME.insert(document)Shell示例 db.mycol.insert({   _id: 100,   title:">
+<meta name="keywords" content="server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongo操作  MAC">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/mongo3/index.html">
+<meta property="og:site_name" content="上饶吴彦祖的github">
+<meta property="og:description" content="mongodb增删改查文档 （在终端中操作）MongoDB插入文档insert()方法要将数据插入到 MongoDB 集合中，需要使用 MongoDB 的 insert()或save()方法。 语法insert()命令的基本语法如下：  db.COLLECTION_NAME.insert(document)Shell示例 db.mycol.insert({   _id: 100,   title:">
+<meta property="og:updated_time" content="2017-07-12T02:54:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongo操作  MAC">
+<meta name="twitter:description" content="mongodb增删改查文档 （在终端中操作）MongoDB插入文档insert()方法要将数据插入到 MongoDB 集合中，需要使用 MongoDB 的 insert()或save()方法。 语法insert()命令的基本语法如下：  db.COLLECTION_NAME.insert(document)Shell示例 db.mycol.insert({   _id: 100,   title:">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/12/mongo3/"/>
+
+
+
+
+
+  <title>mongo操作  MAC | 上饶吴彦祖的github</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">上饶吴彦祖的github</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时日低矮而天下羊白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/mongo3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="上饶吴彦祖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="上饶吴彦祖的github">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mongo操作  MAC</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-12T11:31:12+08:00">
+                2017-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="mongodb增删改查文档-（在终端中操作）"><a href="#mongodb增删改查文档-（在终端中操作）" class="headerlink" title="mongodb增删改查文档 （在终端中操作）"></a>mongodb增删改查文档 （在终端中操作）</h1><h2 id="MongoDB插入文档"><a href="#MongoDB插入文档" class="headerlink" title="MongoDB插入文档"></a>MongoDB插入文档</h2><h3 id="insert-方法"><a href="#insert-方法" class="headerlink" title="insert()方法"></a>insert()方法</h3><p>要将数据插入到 MongoDB 集合中，需要使用 MongoDB 的 insert()或save()方法。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>insert()命令的基本语法如下：</p>
+<blockquote>
+<p>db.COLLECTION_NAME.insert(document)<br>Shell<br>示例</p>
+<p>db.mycol.insert({<br>   _id: 100,<br>   title: ‘MongoDB Overview’,<br>   description: ‘MongoDB is no sql database’,<br>   by: ‘yiibai tutorials’,<br>   url: ‘<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>‘,<br>   tags: [‘mongodb’, ‘database’, ‘NoSQL’],<br>   likes: 100,<br>})<br>Shell<br>这里mycol是集合的名称，在前一章中所创建的。如果数据库中不存在集合，则MongoDB将创建此集合，然后将文档插入到该集合中。</p>
+</blockquote>
+<p>在插入的文档中，如果不指定_id参数，那么 MongoDB 会为此文档分配一个唯一的ObjectId。</p>
+<p>_id为集合中的每个文档唯一的12个字节的十六进制数。 12字节划分如下 -</p>
+<p>_id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id,<br>   3 bytes incrementer)<br>Shell</p>
+<h4 id="要在单个查询中插入多个文档，可以在insert-命令中传递文档数组。如下所示"><a href="#要在单个查询中插入多个文档，可以在insert-命令中传递文档数组。如下所示" class="headerlink" title="要在单个查询中插入多个文档，可以在insert()命令中传递文档数组。如下所示 -"></a>要在单个查询中插入多个文档，可以在insert()命令中传递文档数组。如下所示 -</h4><blockquote>
+<p>db.mycol.insert([<br>   {<br>      _id: 101,<br>      title: ‘MongoDB Guide’,<br>      description: ‘MongoDB is no sql database’,<br>      by: ‘yiibai tutorials’,<br>      url: ‘<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>‘,<br>      tags: [‘mongodb’, ‘database’, ‘NoSQL’],<br>      likes: 100<br>   },</p>
+</blockquote>
+<p>   {<br>      _id: 102,<br>      title: ‘NoSQL Database’,<br>      description: “NoSQL database doesn’t have tables”,<br>      by: ‘yiibai tutorials’,<br>      url: ‘<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>‘,<br>      tags: [‘mongodb’, ‘database’, ‘NoSQL’],<br>      likes: 210,<br>      comments: [<br>         {<br>            user:’user1’,<br>            message: ‘My first comment’,<br>            dateCreated: new Date(2017,11,10,2,35),<br>            like: 0<br>         }<br>      ]<br>   },<br>   {<br>      _id: 104,<br>      title: ‘Python Quick Guide’,<br>      description: “Python Quick start “,<br>      by: ‘yiibai tutorials’,<br>      url: ‘<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>‘,<br>      tags: [‘Python’, ‘database’, ‘NoSQL’],<br>      likes: 30,<br>      comments: [<br>         {<br>            user:’user1’,<br>            message: ‘My first comment’,<br>            dateCreated: new Date(2018,11,10,2,35),<br>            like: 590<br>         }<br>      ]<br>   }<br>])<br>Shell<br>要插入文档，也可以使用db.post.save(document)。 如果不在文档中指定_id，那么save()方法将与insert()方法一样自动分配ID的值。如果指定_id，则将以save()方法的形式替换包含_id的文档的全部数据。</p>
+<h3 id="其它插入文档的方法"><a href="#其它插入文档的方法" class="headerlink" title="其它插入文档的方法"></a>其它插入文档的方法</h3><h4 id="db-collection-insertOne-方法"><a href="#db-collection-insertOne-方法" class="headerlink" title="db.collection.insertOne()方法"></a>db.collection.insertOne()方法</h4><p>db.collection.insertOne()方法将单个文档插入到集合中。以下示例将新文档插入到库存集合中。 如果文档没有指定_id字段，MongoDB会自动将_id字段与ObjectId值添加到新文档。</p>
+<p>db.inventory.insertOne(<br>   { item: “canvas”, qty: 100, tags: [“cotton”], size: { h: 28, w: 35.5, uom: “cm” } }<br>)<br>Shell<br>db.collection.insertOne()方法返回包含新插入的文档的`_id```字段值的文档。</p>
+<p>执行结果如下 -</p>
+<blockquote>
+<p>db.inventory.insertOne(<br>…    { item: “canvas”, qty: 100, tags: [“cotton”], size: { h: 28, w: 35.5, uom: “cm” } }<br>… )<br>{<br>        “acknowledged” : true,<br>        “insertedId” : ObjectId(“5955220846be576f199feb55”)<br>}</p>
+<p>Shell</p>
+<h4 id="db-collection-insertMany-方法"><a href="#db-collection-insertMany-方法" class="headerlink" title="db.collection.insertMany()方法"></a>db.collection.insertMany()方法</h4></blockquote>
+<p>db.collection.insertMany()方法将多个文档插入到集合中，可将一系列文档传递给db.collection.insertMany()方法。以下示例将三个新文档插入到库存集合中。如果文档没有指定_id字段，MongoDB会向每个文档添加一个ObjectId值的_id字段。</p>
+<p>db.inventory.insertMany([<br>   { item: “journal”, qty: 25, tags: [“blank”, “red”], size: { h: 14, w: 21, uom: “cm” } },<br>   { item: “mat”, qty: 85, tags: [“gray”], size: { h: 27.9, w: 35.5, uom: “cm” } },<br>   { item: “mousepad”, qty: 25, tags: [“gel”, “blue”], size: { h: 19, w: 22.85, uom: “cm” } }<br>])<br>Shell<br>insertMany()返回包含新插入的文档_id字段值的文档。执行结果如下 -</p>
+<blockquote>
+<p>db.inventory.insertMany([<br>…    { item: “journal”, qty: 25, tags: [“blank”, “red”], size: { h: 14, w: 21, uom: “cm” } },<br>…    { item: “mat”, qty: 85, tags: [“gray”], size: { h: 27.9, w: 35.5, uom: “cm” } },<br>…    { item: “mousepad”, qty: 25, tags: [“gel”, “blue”], size: { h: 19, w: 22.85, uom: “cm” } }<br>… ])<br>{<br>        “acknowledged” : true,<br>        “insertedIds” : [<br>                ObjectId(“59552c1c46be576f199feb56”),<br>                ObjectId(“59552c1c46be576f199feb57”),<br>                ObjectId(“59552c1c46be576f199feb58”)<br>        ]<br>}</p>
+<h2 id="MongoDB查询文档"><a href="#MongoDB查询文档" class="headerlink" title="MongoDB查询文档"></a>MongoDB查询文档</h2><h3 id="find-方法"><a href="#find-方法" class="headerlink" title="find()方法"></a>find()方法</h3></blockquote>
+<p>要从MongoDB集合查询数据，需要使用MongoDB的find()方法。</p>
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><p>find()命令的基本语法如下：</p>
+<blockquote>
+<p>db.COLLECTION_NAME.find(document)<br>Shell<br>find()方法将以非结构化的方式显示所有文档。</p>
+</blockquote>
+<h3 id="pretty-方法"><a href="#pretty-方法" class="headerlink" title="pretty()方法"></a>pretty()方法</h3><p>要以格式化的方式显示结果，可以使用pretty()方法。</p>
+<h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><blockquote>
+<p>db.mycol.find().pretty()<br>Shell</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>db.mycol.find().pretty()<br>{<br>   “_id”: 100,<br>   “title”: “MongoDB Overview”,<br>   “description”: “MongoDB is no sql database”,<br>   “by”: “yiibai tutorials”,<br>   “url”: “<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>“,<br>   “tags”: [“mongodb”, “database”, “NoSQL”],<br>   “likes”: “100”<br>}</p>
+<p>Shell</p>
+<h3 id="除了find-方法外，还有一个findOne-方法，它只返回一个文档。"><a href="#除了find-方法外，还有一个findOne-方法，它只返回一个文档。" class="headerlink" title="除了find()方法外，还有一个findOne()方法，它只返回一个文档。"></a>除了find()方法外，还有一个findOne()方法，它只返回一个文档。</h3></blockquote>
+<p>MongoDB 与 RDBMS的等效 Where 子句</p>
+<h3 id="要在一些条件的基础上查询文档，可以使用以下操作。"><a href="#要在一些条件的基础上查询文档，可以使用以下操作。" class="headerlink" title="要在一些条件的基础上查询文档，可以使用以下操作。"></a>要在一些条件的基础上查询文档，可以使用以下操作。</h3><p>操作    语法    示例    RDBMS等效语句<br>相等    {<key>:<value>}    db.mycol.find({“by”:”yiibai”}).pretty()    where by = ‘yiibai’<br>小于    {<key>:{$lt:<value>}}    db.mycol.find({“likes”:{$lt:50}}).pretty()    where likes &lt; 50<br>小于等于    {<key>:{$lte:<value>}}    db.mycol.find({“likes”:{$lte:50}}).pretty()    where likes &lt;= 50<br>大于    {<key>:{$gt:<value>}}    db.mycol.find({“likes”:{$gt:50}}).pretty()    where likes &gt; 50<br>大于等于    {<key>:{$gte:<value>}}    db.mycol.find({“likes”:{$gte:50}}).pretty()    where likes &gt;= 50<br>不等于    {<key>:{$ne:<value>}}    db.mycol.find({“likes”:{$ne:50}}).pretty()    where likes != 50<br>下面我们将对上表中的所有操作演示 -</value></key></value></key></value></key></value></key></value></key></value></key></p>
+<p>MongoDB中的AND操作符</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><p>在find()方法中，如果通过使用’，‘将它们分开传递多个键，则 MongoDB 将其视为AND条件。 以下是AND的基本语法 -</p>
+<blockquote>
+<p>db.mycol.find(<br>   {<br>      $and: [<br>         {key1: value1}, {key2:value2}<br>      ]<br>   }<br>).pretty()<br>Shell</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3></blockquote>
+<p>以下示例将显示由“yiibai tutorials”编写并且标题为“MongoDB Overview”的所有教程。</p>
+<blockquote>
+<p>db.mycol.find({$and:[{“by”:”yiibai tutorials”},{“title”: “MongoDB Overview”}]}).pretty()<br>{<br>        “_id” : 100,<br>        “title” : “MongoDB Overview”,<br>        “description” : “MongoDB is no sql database”,<br>        “by” : “yiibai tutorials”,<br>        “url” : “<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>“,<br>        “tags” : [<br>                “mongodb”,<br>                “database”,<br>                “NoSQL”<br>        ],<br>        “likes” : 100<br>}</p>
+<p>Shell</p>
+<h3 id="对于上面给出的例子，等效的SQL-where子句是"><a href="#对于上面给出的例子，等效的SQL-where子句是" class="headerlink" title="对于上面给出的例子，等效的SQL where子句是 -"></a>对于上面给出的例子，等效的SQL where子句是 -</h3></blockquote>
+<p>SELECT * FROM mycol where by =’yiibai tutorials’ AND title =’MongoDB Overview’<br>SQL<br>可以在find子句中传递任意数量的键值。</p>
+<h4 id="MongoDB中的OR操作符"><a href="#MongoDB中的OR操作符" class="headerlink" title="MongoDB中的OR操作符"></a>MongoDB中的OR操作符</h4><p>语法</p>
+<p>在要根据OR条件查询文档，需要使用$or关键字。 以下是OR条件的基本语法 -</p>
+<blockquote>
+<p>db.mycol.find(<br>   {<br>      $or: [<br>         {key1: value1}, {key2:value2}<br>      ]<br>   }<br>).pretty()<br>Shell<br>示例</p>
+</blockquote>
+<p>以下示例将显示由“yiibai tutorials”编写或标题为“MongoDB Overview”的所有教程。</p>
+<blockquote>
+<p>db.mycol.find({$or:[{“by”:”yiibai tutorials”},{“title”: “MongoDB Overview”}]}).pretty()<br>{<br>   “_id”: 100,<br>   “title”: “MongoDB Overview”,<br>   “description”: “MongoDB is no sql database”,<br>   “by”: “yiibai tutorials”,<br>   “url”: “<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>“,<br>   “tags”: [“mongodb”, “database”, “NoSQL”],<br>   “likes”: “100”<br>}</p>
+<p>Shell</p>
+<h4 id="使用-AND-和-OR-条件一起"><a href="#使用-AND-和-OR-条件一起" class="headerlink" title="使用 AND 和 OR 条件一起"></a>使用 AND 和 OR 条件一起</h4></blockquote>
+<p>示例</p>
+<p>以下示例将显示likes大于10以及标题是“MongoDB Overview”或者“yiibai tutorials”的所有文档。 等价SQL where子句为 -</p>
+<p>SELECT * FROM mycol where likes&gt; 10 AND(by =’yiibai tutorials’ OR title =’MongoDB Overview’)<br>SQL</p>
+<blockquote>
+<p>db.mycol.find({“likes”: {$gt:10}, $or: [{“by”: “yiibai tutorials”},<br>   {“title”: “MongoDB Overview”}]}).pretty()<br>{<br>   “_id”: 100,<br>   “title”: “MongoDB Overview”,<br>   “description”: “MongoDB is no sql database”,<br>   “by”: “yiibai tutorials”,<br>   “url”: “<a href="http://www.yiibai.com" target="_blank" rel="external">http://www.yiibai.com</a>“,<br>   “tags”: [“mongodb”, “database”, “NoSQL”],<br>   “likes”: “100”<br>}</p>
+<p>Shell</p>
+<h3 id="查询嵌入-嵌套文档"><a href="#查询嵌入-嵌套文档" class="headerlink" title="查询嵌入/嵌套文档"></a>查询嵌入/嵌套文档</h3></blockquote>
+<p>这里演示如何使用：db.collection.find()方法对嵌入/嵌套文档的查询操作的示例。 此页面上的示例使用inventory集合。要填充库存(inventory)集合以准备一些数据，请运行以下命令：</p>
+<p>db.inventory.insertMany( [<br>   { item: “journal”, qty: 25, size: { h: 14, w: 21, uom: “cm” }, status: “A” },<br>   { item: “notebook”, qty: 50, size: { h: 8.5, w: 11, uom: “in” }, status: “A” },<br>   { item: “paper”, qty: 100, size: { h: 8.5, w: 11, uom: “in” }, status: “D” },<br>   { item: “planner”, qty: 75, size: { h: 22.85, w: 30, uom: “cm” }, status: “D” },<br>   { item: “postcard”, qty: 45, size: { h: 10, w: 15.25, uom: “cm” }, status: “A” }<br>]);<br>Shell</p>
+<h3 id="匹配嵌入-嵌套文档"><a href="#匹配嵌入-嵌套文档" class="headerlink" title="匹配嵌入/嵌套文档"></a>匹配嵌入/嵌套文档</h3><p>要在作为嵌入/嵌套文档的字段上指定相等条件，请使用查询过滤器文档{<field>：<value>}，其中<value>是要匹配的文档。</value></value></field></p>
+<p>例如，以下查询选择字段size等于{ h: 14, w: 21, uom: “cm” }的所有文档：</p>
+<p>db.inventory.find( { size: { h: 14, w: 21, uom: “cm” } } )<br>Shell<br>整个嵌入式文档中的相等匹配需要精确匹配指定的<value>文档，包括字段顺序。<br>例如，以下查询与库存(inventory)集合中的任何文档不匹配：</value></p>
+<p>db.inventory.find(  { size: { w: 21, h: 14, uom: “cm” } }  )<br>Shell</p>
+<h4 id="查询嵌套字段"><a href="#查询嵌套字段" class="headerlink" title="查询嵌套字段"></a>查询嵌套字段</h4><p>要在嵌入/嵌套文档中的字段上指定查询条件，请使用点符号(“field.nestedField”)。</p>
+<p>在嵌套字段上指定等于匹配</p>
+<p>以下示例选择在size字段中嵌套的字段uom等于“in”的所有文档：</p>
+<p>db.inventory.find( { “size.uom”: “in” } )<br>Shell</p>
+<h4 id="使用查询运算符指定匹配"><a href="#使用查询运算符指定匹配" class="headerlink" title="使用查询运算符指定匹配"></a>使用查询运算符指定匹配</h4><p>查询过滤器文档可以使用查询运算符来指定，如以下形式的条件：</p>
+<p>{ <field1>: { <operator1>: <value1> }, … }<br>Shell<br>以下查询使用size字段中嵌入的字段h中的小于运算符($lt)：</value1></operator1></field1></p>
+<p>db.inventory.find( { “size.h”: { $lt: 15 } } )<br>Shell</p>
+<h4 id="指定AND条件"><a href="#指定AND条件" class="headerlink" title="指定AND条件"></a>指定AND条件</h4><p>以下查询选择嵌套字段h小于15的所有文档，嵌套字段uom等于“in”，status字段等于“D”：</p>
+<p>db.inventory.find( { “size.h”: { $lt: 15 }, “size.uom”: “in”, status: “D” } )</p>
+<h2 id="MongoDB更新文档"><a href="#MongoDB更新文档" class="headerlink" title="MongoDB更新文档"></a>MongoDB更新文档</h2><p>MongoDB的update()和save()方法用于将集合中的文档更新。update()方法更新现有文档中的值，而save()方法使用save()方法中传递的文档数据替换现有文档。</p>
+<h3 id="MongoDB-Update-方法"><a href="#MongoDB-Update-方法" class="headerlink" title="MongoDB Update()方法"></a>MongoDB Update()方法</h3><p>update()方法更新现有文档中的值。</p>
+<h4 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h4><p>update()方法的基本语法如下 -</p>
+<blockquote>
+<p>db.COLLECTION_NAME.update(SELECTION_CRITERIA, UPDATED_DATA)<br>Shell</p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4></blockquote>
+<p>考虑mycol集合具有以下数据 -</p>
+<blockquote>
+<p>db.mycol.find({}, {‘_id’:1, ‘title’:1})<br>{ “_id” : 100, “title” : “MongoDB Overview” }<br>{ “_id” : 101, “title” : “MongoDB Guide” }<br>{ “_id” : 102, “title” : “NoSQL Database” }<br>{ “_id” : 104, “title” : “Python Quick Guide” }</p>
+<p>Shell<br>以下示例将为标题为“MongoDB Overview”的文档设置为“New Update MongoDB Overview”。</p>
+<p>db.mycol.find({‘title’:’MongoDB Overview’},{‘_id’:1, ‘title’:1})<br>{ “_id” : 100, “title” : “MongoDB Overview” }<br>更新操作<br>db.mycol.update({‘title’:’MongoDB Overview’},{$set:{‘title’:’New Update MongoDB Overview’}})<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br> 查询更新后的结果 -<br>db.mycol.find({‘_id’:100},{‘_id’:1, ‘title’:1})<br>{ “_id” : 100, “title” : “New Update MongoDB Overview” }</p>
+<p>Shell<br>默认情况下，MongoDB只会更新一个文档。要更新多个文档，需要将参数’multi‘设置为true。</p>
+<p>db.mycol.update({‘title’:’MongoDB Overview’},<br>   {$set:{‘title’:’New Update MongoDB Overview’}},{multi:true})<br>Shell</p>
+<h3 id="MongoDB-Save-方法"><a href="#MongoDB-Save-方法" class="headerlink" title="MongoDB Save()方法"></a>MongoDB Save()方法</h3></blockquote>
+<p>save()方法使用save()方法中传递的文档数据替换现有文档。</p>
+<h4 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h4><p>MongoDB save()方法的基本语法如下所示：</p>
+<blockquote>
+<p>db.COLLECTION_NAME.save({_id:ObjectId(),NEW_DATA})<br>Shell<br>以下示例将_id为 100 的文档使用新的文档替换。</p>
+</blockquote>
+<p>db.mycol.save(<br>   {<br>      “_id” : 100, “title”:”Update By Save()Method.”, “by”:”yiibai.com”<br>   }<br>)</p>
+<p>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })</p>
+<p>db.mycol.find({‘_id’:100}, {‘_id’:1, ‘title’:1})<br>{ “_id” : 100, “title” : “Update By Save()Method.” }</p>
+<h2 id="MongoDB删除文档"><a href="#MongoDB删除文档" class="headerlink" title="MongoDB删除文档"></a>MongoDB删除文档</h2><h3 id="remove-方法"><a href="#remove-方法" class="headerlink" title="remove()方法"></a>remove()方法</h3><p>MongoDB中的 remove()方法用于从集合中删除文档。 remove()方法接受两个参数。 一个是删除条件，第二个是标志：justOne。</p>
+<p>criteria - (可选)符合删除条件的集合将被删除。<br>justOne - (可选)如果设置为true或1，则只删除一个文档。</p>
+<h4 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h4><p>remove()方法的基本语法如下 -</p>
+<blockquote>
+<p>db.COLLECTION_NAME.remove(DELLETION_CRITTERIA)<br>Shell<br>假设mycol集合具有以下数据。</p>
+<p>db.mycol.find({}, {‘_id’:1, ‘title’:1})<br>{ “_id” : 101, “title” : “MongoDB Guide” }<br>{ “_id” : 102, “title” : “NoSQL Database” }<br>{ “_id” : 104, “title” : “Python Quick Guide” }<br>{ “_id” : 100, “title” : “Update By Save()Method.” }</p>
+<p>Shell<br>以下示例将删除_id为“100”的文档。</p>
+<p>db.mycol.find({}, {‘_id’:1, ‘title’:1})<br>{ “_id” : 101, “title” : “MongoDB Guide” }<br>{ “_id” : 102, “title” : “NoSQL Database” }<br>{ “_id” : 104, “title” : “Python Quick Guide” }<br>{ “_id” : 100, “title” : “Update By Save()Method.” }</p>
+<p>db.mycol.remove({‘_id’:100})<br>WriteResult({ “nRemoved” : 1 })<br>db.mycol.find({}, {‘_id’:1, ‘title’:1})<br>{ “_id” : 101, “title” : “MongoDB Guide” }<br>{ “_id” : 102, “title” : “NoSQL Database” }<br>{ “_id” : 104, “title” : “Python Quick Guide” }</p>
+<p>Shell</p>
+<h4 id="只删除一条文档记录"><a href="#只删除一条文档记录" class="headerlink" title="只删除一条文档记录"></a>只删除一条文档记录</h4></blockquote>
+<p>如果有多条记录，并且只想删除第一条记录，则在remove()方法中设置justOne参数。</p>
+<blockquote>
+<p>db.COLLECTION_NAME.remove(DELETION_CRITERIA,1)<br>Shell</p>
+<h4 id="删除所有文档记录"><a href="#删除所有文档记录" class="headerlink" title="删除所有文档记录"></a>删除所有文档记录</h4></blockquote>
+<p>删除所有文档记录，可在remove()方法中设置justOne参数。</p>
+<p>如果不指定删除条件，MongoDB 将删除集合中的所有文档。 这相当于SQL的truncate命令。</p>
+<blockquote>
+<p>db.mycol.remove()<br>db.mycol.find()</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/server/" rel="tag"># server</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/12/mongo1/" rel="next" title="mongo操作  MAC">
+                <i class="fa fa-chevron-left"></i> mongo操作  MAC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/12/mongo2/" rel="prev" title="mongo操作  MAC">
+                mongo操作  MAC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="上饶吴彦祖" />
+          <p class="site-author-name" itemprop="name">上饶吴彦祖</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mongodb增删改查文档-（在终端中操作）"><span class="nav-number">1.</span> <span class="nav-text">mongodb增删改查文档 （在终端中操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB插入文档"><span class="nav-number">1.1.</span> <span class="nav-text">MongoDB插入文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">insert()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要在单个查询中插入多个文档，可以在insert-命令中传递文档数组。如下所示"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">要在单个查询中插入多个文档，可以在insert()命令中传递文档数组。如下所示 -</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它插入文档的方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">其它插入文档的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#db-collection-insertOne-方法"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">db.collection.insertOne()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#db-collection-insertMany-方法"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">db.collection.insertMany()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB查询文档"><span class="nav-number">1.2.</span> <span class="nav-text">MongoDB查询文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">find()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法-1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pretty-方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">pretty()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法-2"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#示例"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#除了find-方法外，还有一个findOne-方法，它只返回一个文档。"><span class="nav-number">1.2.3.</span> <span class="nav-text">除了find()方法外，还有一个findOne()方法，它只返回一个文档。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要在一些条件的基础上查询文档，可以使用以下操作。"><span class="nav-number">1.2.4.</span> <span class="nav-text">要在一些条件的基础上查询文档，可以使用以下操作。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-3"><span class="nav-number">1.2.5.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-1"><span class="nav-number">1.2.6.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于上面给出的例子，等效的SQL-where子句是"><span class="nav-number">1.2.7.</span> <span class="nav-text">对于上面给出的例子，等效的SQL where子句是 -</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB中的OR操作符"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">MongoDB中的OR操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-AND-和-OR-条件一起"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">使用 AND 和 OR 条件一起</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询嵌入-嵌套文档"><span class="nav-number">1.2.8.</span> <span class="nav-text">查询嵌入/嵌套文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配嵌入-嵌套文档"><span class="nav-number">1.2.9.</span> <span class="nav-text">匹配嵌入/嵌套文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询嵌套字段"><span class="nav-number">1.2.9.1.</span> <span class="nav-text">查询嵌套字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用查询运算符指定匹配"><span class="nav-number">1.2.9.2.</span> <span class="nav-text">使用查询运算符指定匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指定AND条件"><span class="nav-number">1.2.9.3.</span> <span class="nav-text">指定AND条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB更新文档"><span class="nav-number">1.3.</span> <span class="nav-text">MongoDB更新文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-Update-方法"><span class="nav-number">1.3.1.</span> <span class="nav-text">MongoDB Update()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法-4"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-2"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-Save-方法"><span class="nav-number">1.3.2.</span> <span class="nav-text">MongoDB Save()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法-5"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB删除文档"><span class="nav-number">1.4.</span> <span class="nav-text">MongoDB删除文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">remove()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法-6"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只删除一条文档记录"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">只删除一条文档记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除所有文档记录"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">删除所有文档记录</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">上饶吴彦祖</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
